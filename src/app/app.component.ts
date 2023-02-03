@@ -11,12 +11,12 @@ export class AppComponent {
   userSelected: User = new User();
 
   updateUser(user: User) {
-    this.showForm = true;
+    this.showForm = !this.showForm;
     this.userSelected = user;
   }
   newUser() {
     this.userSelected = new User();
-    this.showForm = true;
+    this.showForm = !this.showForm;
 
   }
 }
