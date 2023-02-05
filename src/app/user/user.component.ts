@@ -15,17 +15,17 @@ export class UserComponent implements OnInit {
     faPen = faPencilAlt;
     faTrash = faTrash;
     faEye = faEye;
-
+    
   @Input('user-data') user: User | undefined;
   @Output('onDeleteUser') userDeleted = new EventEmitter();
   @Output('onSelectUser') onSelectUser = new EventEmitter();
   
 
   constructor(private userService: UserService, private route: Router) {
-
+   
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
   deleteUser() {
@@ -39,4 +39,6 @@ export class UserComponent implements OnInit {
     // metodo 2 
     this.route.navigate(['users', this.user?.id, 'edit']);
   }
+
+
 }

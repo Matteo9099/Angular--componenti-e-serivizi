@@ -42,6 +42,7 @@ export class UserDetailComponent implements OnInit {
       }
     )
   }
+
   saveUser() {
     if (this.user.id > 0) {
       this.userService.updateUser(this.user);
@@ -51,6 +52,7 @@ export class UserDetailComponent implements OnInit {
     }
     this.router.navigate(['users'])
   }
+
   resetForm(form: FormGroup) {
     if (this.user.id === 0) {
       this.user = new User();
@@ -59,5 +61,6 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
+  
 
 }

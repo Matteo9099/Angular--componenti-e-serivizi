@@ -6,7 +6,7 @@ export class User implements UserInterface {
   email: string;
   fiscalcode: string;
   province: string;
-  phone: string;
+  gender: string;
   age: number;
   constructor() {
     this.id = 0;
@@ -15,7 +15,7 @@ export class User implements UserInterface {
     this.email = '';
     this.fiscalcode = '';
     this.province = '';
-    this.phone = '';
+    this.gender = '';
     this.age = 0;
   }
 }

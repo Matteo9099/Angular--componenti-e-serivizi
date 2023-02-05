@@ -5,7 +5,7 @@ export interface UserInterface {
     email: string;
     fiscalcode: string;
     province: string;
-    phone: string;
+    gender: string;
     age: number;
   
   }

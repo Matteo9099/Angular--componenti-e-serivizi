@@ -3,30 +3,37 @@
     <div class="float-end mb-3">
       <a class="btn btn-md btn-warning" [routerLink]="['/users']"><fa-icon [icon]="faArrowLeft"></fa-icon></a>
     </div>
-    <div class="form-group">
-      <label for="firstname">First name</label>
-      <input class="form-control mb-3" [(ngModel)]="user.name" name="firstname" id="firstname">
-    </div>
+    
     <div class="form-group">
       <label for="lastname">Last name</label>
       <input class="form-control mb-3" [(ngModel)]="user.lastname" name="lastname" id="lastname">
     </div>
+
+    <div class="form-group">
+      <label for="firstname">First name</label>
+      <input class="form-control mb-3" [(ngModel)]="user.name" name="firstname" id="firstname">
+    </div>
+    
     <div class="form-group">
       <label for="fiscalcode">Fiscal code</label>
       <input class="form-control mb-3" [(ngModel)]="user.fiscalcode" name="fiscalcode" id="fiscalcode">
     </div>
+    
     <div class="form-group">
-      <label for="phone">Phone</label>
-      <input class="form-control mb-3" [(ngModel)]="user.phone" name="phone" id="phone">
+      <label for="gender">Gender</label>
+      <input class="form-control mb-3" [(ngModel)]="user.gender" name="gender" id="gender">
     </div>
+    
     <div class="form-group">
       <label for="email">Email</label>
       <input class="form-control mb-3" [(ngModel)]="user.email" type="email" name="email" id="email">
     </div>
+    
     <div class="form-group">
       <label for="age">Age</label>
-      <input class="form-control mb-3" [(ngModel)]="user.age" type="number" name="age" id="age">
+      <input class="form-control mb-3" [(ngModel)]="user.age" type="date" name="age" id="age">
     </div>
+    
     <div class="form-group d-flex justify-content-between">
       <button class="btn btn-outline-secondary" (click)="resetForm(f.form)">RESET</button>
       <button (click)="saveUser()" class="btn btn-success"> SAVE</button>
