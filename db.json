@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "name": "Alice",
+      "lastname": "De Paoli",
+      "age": 20,
+      "province": "Torino",
+      "email": "hidran@gmail.com",
+      "gender": "Female",
+      "fiscalcode": "RSAHRN72M22Z444S"
+    },
+    {
+      "id": 3,
+      "name": "Sara",
+      "lastname": "Cuccurella",
+      "age": 20,
+      "province": "Torino",
+      "email": "hidran@gmail.com",
+      "gender": "Female",
+      "fiscalcode": "RSAHRN72M22Z444S"
+    },
+    {
+      "name": "New user",
+      "lastname": "from vscode",
+      "age": 20,
+      "province": "Torino",
+      "email": "newuser@gmail.com",
+      "gender": "Female",
+      "fiscalcode": "RSAHRN72M22Z444S",
+      "id": 5
+    }
+  ]
+}

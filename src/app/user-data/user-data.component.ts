@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User } from '../classes/User';
+// import { User } from '../classes/User';
 import { UserService } from '../service/user.service';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { UserInterface } from '../interfaces/user';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class UserDataComponent implements OnInit {
 
   faArrowLeft = faArrowCircleLeft;
 
-  public user: User | undefined;
+  public user: UserInterface | undefined;
 
   constructor(private userService: UserService, private route: ActivatedRoute) {
 
@@ -23,10 +24,7 @@ export class UserDataComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(param => {
       const id = Number(param['id']);
-      const user = this.userService.getUser(id);
-        if(user) {
-          this.user = user;
-        }
+      this.userService.getUser(id).subscribe(user => this.user = user);
       }
     )
   }

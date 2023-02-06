@@ -32,25 +32,27 @@ export class UserDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = new User();
     this.route.params.subscribe(param => {
-      const id = Number(param['id']);
-      const user = this.userService.getUser(id);
-        if(user) {
-          this.user = user;
+        if(param['id']) {
+          const id = Number(param['id']);
+          this.userService.getUser(id).subscribe(user => this.user = user);
         }
-      }
-    )
+    });
   }
 
   saveUser() {
+    let obs;
+
     if (this.user.id > 0) {
-      this.userService.updateUser(this.user);
+      obs = this.userService.updateUser(this.user);
     }
     else {
-      this.userService.createUser(this.user);
+      obs = this.userService.createUser(this.user);
     }
-    this.router.navigate(['users'])
+    obs.subscribe(resp => {
+      console.log('response', resp);
+      this.router.navigate(['users'])
+    });
   }
 
   resetForm(form: FormGroup) {

@@ -1,78 +1,39 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../classes/User';
 import { UserInterface } from '../interfaces/user';
+import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  users: User[] = [
-    {
-      id: 1,
-      name: 'Luca',
-      lastname: 'Fabioli',
-      age: 20,
-      province: 'Torino',
-      email: 'hidran@gmail.com',
-      gender: 'Female',
-      fiscalcode: 'RSAHRN72M22Z444S',
-    },
-    {
-      id: 2,
-      name: 'Alice',
-      lastname: 'De Paoli',
-      email: 'hidran@gmail.com',
-      fiscalcode: 'RSAHRN72M22Z444S',
-      province: 'Torino',
-      gender: 'Female',
-      age: 20
-    },
-    {
-      id: 3,
-      name: 'Sara',
-      lastname: 'Cuccurella',
-      email: 'hidran@gmail.com',
-      fiscalcode: 'RSAHRN72M22Z444S',
-      province: 'Torino',
-      gender: 'Female',
-      age: 20
-    },
-    {
-      id: 4,
-      name: 'Pietro',
-      lastname: 'Massari',
-      email: 'hidran@gmail.com',
-      fiscalcode: 'RSAHRN72M22Z444S',
-      province: 'Torino',
-      gender: 'Male',
-      age: 20
-    }
-  ];
+ 
+  apiurl = environment.APIURL;
 
-  getUsers(): User[] {
-    return this.users;
+  constructor(private http: HttpClient) {
+
   }
 
-  getUser(id: number): User | undefined {
-    return this.users.find(user => user.id === id);
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.apiurl);
+  }
+
+  getUser(id: number): Observable<User> {
+    return this.http.get<User>(this.apiurl + '/' + id);
   }
 
   deleteUser(user: User) {
-
-    const index = this.users.indexOf(user);
-    if (index > -1) {
-      this.users.splice(index, 1);
-    }
+    return this.http.delete<User>(this.apiurl + '/' + user.id);
   }
-  updateUser(user: UserInterface) {
-    const idx = this.users.findIndex(v => v.id === user.id);
 
-    if (idx !== -1) {
-      this.users[idx] = { ...user };
-    }
+  updateUser(user: UserInterface): Observable<User> {
+    return this.http.put<User>(this.apiurl + '/' + user.id, user);
   }
-  createUser(user: UserInterface) {
-    this.users.splice(0, 0, { ...user });
+
+  createUser(user: UserInterface): Observable<User> {
+    return this.http.post<User>(this.apiurl, user);
   }
 
 }
